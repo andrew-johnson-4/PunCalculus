@@ -13,3 +13,9 @@ binding    := [a-zA-Z0-9]+ [:] [=] rhs \n
 
 program    := binding*
 ```
+
+## Types
+
+$$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
+
+$$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C}{\bot}$$
