@@ -16,6 +16,8 @@ program    := binding*
 
 ## Types
 
+Typechecking is a graph-coloring problem to ensure that Cannot Determine Color does not get applied to the result of Greedy Infer.
+
 $$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
 $$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C}{\bot}$$
