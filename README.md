@@ -1,5 +1,5 @@
 # Pun Calculus
-A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc polymorphism)
+A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc polymorphism).
 
 ## EBNF
 
