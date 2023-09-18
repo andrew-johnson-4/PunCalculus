@@ -8,3 +8,6 @@ edition = "2018"
 readme = "README.md"
 repository = "https://github.com/andrew-johnson-4/PunCalculus"
 keywords = ["pun","calculus"]
+
+[dependencies]
+regex = { version = "1" }
