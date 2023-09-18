@@ -1,0 +1,10 @@
+[package]
+name = "punc"
+version = "0.0.1"
+authors = ["Andrew <andrew@subarctic.org>"]
+license = "MIT"
+description = "Pun Calculus"
+edition = "2018"
+readme = "README.md"
+repository = "https://github.com/andrew-johnson-4/PunCalculus"
+keywords = ["pun","calculus"]
