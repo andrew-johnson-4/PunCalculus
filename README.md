@@ -24,6 +24,10 @@ $$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to
 
 $$suppose \quad \frac{f: A \to B}{f(x): B}$$
 
+$$lift \ plural \quad \frac{f: A \ \ \ f: B}{f: A \ + \ B}$$
+
+$$narrow \ plural \quad \frac{f: A \to B \ \ \ f: C \to D \ \ \ x: C}{f(x): D}$$
+
 ## Notes
 
 For simplicity, all bindings are modelled as morphisms.
