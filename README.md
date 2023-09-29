@@ -22,8 +22,6 @@ $$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
 $$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C}{\bot}$$
 
-$$suppose \quad \frac{f: A \to B}{f(x): B}$$
-
 $$lift \ plural \quad \frac{f: A \ \ \ f: B}{f: A \ + \ B}$$
 
 $$narrow \ plural \quad \frac{f: A \to B \ \ \ f: C \to D \ \ \ x: C}{f(x): D}$$
