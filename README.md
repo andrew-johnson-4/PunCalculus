@@ -3,7 +3,7 @@ A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc pol
 
 ## Motivation
 
-Can your type system solve Sudoku?
+Can your type system solve [Sudoku](https://github.com/andrew-johnson-4/PunCalculus/blob/main/examples/sudoku.punc)?
 
 ## EBNF
 
