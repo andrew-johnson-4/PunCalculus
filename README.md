@@ -28,7 +28,13 @@ $$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to
 
 $$follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 
+$$into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
+
+$$out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
+
 ## Notes
 
 For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 0 -> A.
+
+Type System above is not strongly normalizing yet.
