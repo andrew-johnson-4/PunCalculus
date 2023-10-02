@@ -1,0 +1,25 @@
+//9x9 grid with punned bindings for answer as 1 through 9
+for $x in 1..9 {
+for $y in 1..9 {
+for $t in 1..9 {
+   let cell$x$y: $t;
+}}}
+
+//Sudoku constraints
+for $x in 1..9 {
+   require cell$x1+cell$x2+cell$x3+cell$x4+cell$x5+cell$x6+cell$x7+cell$x8+cell$x9=45;
+}
+for $y in 1..9 {
+   require cell1$y+cell2$y+cell3$y+cell4$y+cell5$y+cell6$y+cell7$y+cell8$y+cell9$y=45;
+}
+
+//print solution
+print (typeof cell11) (typeof cell21) (typeof cell31) (typeof cell41) (typeof cell51) (typeof cell61) (typeof cell71) (typeof cell81) (typeof cell91)
+print (typeof cell12) (typeof cell22) (typeof cell32) (typeof cell42) (typeof cell52) (typeof cell62) (typeof cell72) (typeof cell82) (typeof cell92)
+print (typeof cell13) (typeof cell23) (typeof cell33) (typeof cell43) (typeof cell53) (typeof cell63) (typeof cell73) (typeof cell83) (typeof cell93)
+print (typeof cell14) (typeof cell24) (typeof cell34) (typeof cell44) (typeof cell54) (typeof cell64) (typeof cell74) (typeof cell84) (typeof cell94)
+print (typeof cell15) (typeof cell25) (typeof cell35) (typeof cell45) (typeof cell55) (typeof cell65) (typeof cell75) (typeof cell85) (typeof cell95)
+print (typeof cell16) (typeof cell26) (typeof cell36) (typeof cell46) (typeof cell56) (typeof cell66) (typeof cell76) (typeof cell86) (typeof cell96)
+print (typeof cell17) (typeof cell27) (typeof cell37) (typeof cell47) (typeof cell57) (typeof cell67) (typeof cell77) (typeof cell87) (typeof cell97)
+print (typeof cell18) (typeof cell28) (typeof cell38) (typeof cell48) (typeof cell58) (typeof cell68) (typeof cell78) (typeof cell88) (typeof cell98)
+print (typeof cell19) (typeof cell29) (typeof cell39) (typeof cell49) (typeof cell59) (typeof cell69) (typeof cell79) (typeof cell89) (typeof cell99)
