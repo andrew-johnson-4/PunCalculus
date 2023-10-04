@@ -26,7 +26,7 @@ $$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
 $$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C}{\bot}$$
 
-$$follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
+$$always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 
 $$into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
 
