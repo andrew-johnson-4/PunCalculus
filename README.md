@@ -32,10 +32,13 @@ $$into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
 
 $$out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
 
+$$absurd \quad \frac{f:A \quad f:¬A}{\bot}$$
+
 ## Notes
 
 For simplicity, all bindings are modelled as morphisms.
-An "object" A can be modelled as a simple morphism 0 -> A.
+An "object" A can be modelled as a simple morphism 1 -> A.
+Similarly ¬A is shorthand for 0 -> A.
 
 Type System above is not strongly normalizing yet.
 
