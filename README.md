@@ -38,3 +38,7 @@ For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 0 -> A.
 
 Type System above is not strongly normalizing yet.
+
+## Citations
+
+[A very brisk introduction to Type Theory](https://ncatlab.org/nlab/show/type+theory)
