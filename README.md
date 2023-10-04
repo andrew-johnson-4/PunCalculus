@@ -32,6 +32,8 @@ $$into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
 
 $$out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
 
+$$application \quad \frac{f:A \to B \quad f:A \to C \quad x:A}{f(x): \ B \ + \ C}$$
+
 $$absurd \quad \frac{f:A \quad f:¬A}{\bot}$$
 
 ## Notes
