@@ -3,7 +3,7 @@ A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc pol
 
 ## Motivation
 
-Can your type system solve Sudoku?
+Interactive theorem proving is too often a solo effort by either the programmer or the program. This type system aims to improve the interactivity.
 
 ## Types
 
