@@ -31,9 +31,9 @@ For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 -> A.
 Similarly ¬A is shorthand for 0 -> A.
 
-Greedy Infer is the gas. determine color is the brakes. the rules for graph coloring precedence can be customized.
+Greedy Infer is the gas. Determine Color is the brakes. The rules for graph coloring precedence can be customized.
 
-Type System above is not strongly normalizing yet.
+The type system above is not strongly normalizing yet.
 
 ## Citations
 
