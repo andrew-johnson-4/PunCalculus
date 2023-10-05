@@ -13,7 +13,7 @@ $$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
 $$infer \ argument \quad \frac{f:A \to B \quad f(x):B}{x:A}$$
 
-$$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C \quad x:A \quad x:B \quad f(x): \ ?}{\bot}$$
+$$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C \quad x:A \quad x:B \quad f(x)}{\bot}$$
 
 $$always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 
