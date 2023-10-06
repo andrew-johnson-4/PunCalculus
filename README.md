@@ -29,7 +29,7 @@ $$absurd \quad \frac{f:A \quad f:¬A}{\bot}$$
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
 For this reason, the Cannot Determine Color rule fails when it is incapable of determining the concrete type.
-I am not really sure how to represent this situation in traditional type theory, so the syntax is fairly arbitrary right now. Concrete types are types on the right of the turnstile, which every term needs and is the terminal state of typechecking.
+Concrete types are types on the right of the turnstile, which every term needs and is the terminal state of typechecking.
 
 For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 -> A.
