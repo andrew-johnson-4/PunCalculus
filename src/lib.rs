@@ -1,3 +1,3 @@
 
-pub mod ast;
-pub mod prs;
+pub mod typ;
+pub mod reference_solver;

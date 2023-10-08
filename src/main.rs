@@ -1,6 +1,5 @@
 
-use punc::ast;
-use punc::prs;
+use punc::reference_solver;
 
 fn main() {
    println!("Hello Ambiguous World!")
