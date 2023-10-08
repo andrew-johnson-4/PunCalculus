@@ -25,6 +25,8 @@ $$application \quad \frac{f:A \to B \quad f:A \to C \quad x:A}{f(x): \ B \ + \ C
 
 $$absurd \quad \frac{f:A \quad f:¬A}{\bot}$$
 
+$$terminal \ infer \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash X \quad y \vdash Y}{λ⟨a.b⟩⟨x.y⟩ \vdash (A \to B) + (X \to Y)}$$
+
 ## Notes
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
