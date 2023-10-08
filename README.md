@@ -33,6 +33,8 @@ _Concrete_ types are never ambiguous, they get collapsed into at most a plural t
 For this reason, the Cannot Determine Color rule fails when it is incapable of determining the concrete type.
 Concrete types are types on the right of the turnstile, which every term needs and is the terminal state of typechecking.
 
+_Plural_ types are similar to product types plus an implicit subtyping rule: A + B ⇒ A and A + B ⇒ B.
+
 For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 -> A.
 Similarly ¬A is shorthand for 0 -> A.
