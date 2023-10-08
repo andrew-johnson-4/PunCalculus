@@ -12,3 +12,4 @@
 //x: 0 -> A   | True
 //x: 1 -> A   | True
 //x: A -> B   | True
+//x: A + B    | True

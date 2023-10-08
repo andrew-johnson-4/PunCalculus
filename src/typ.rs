@@ -6,4 +6,5 @@ pub enum Type {
    Bottom,
    Named(String),
    ArrowType(Box<Type>,Box<Type>),
+   Plural(Vec<Type>),
 }
