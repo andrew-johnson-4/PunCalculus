@@ -25,7 +25,9 @@ $$application \quad \frac{f:A \to B \quad f:A \to C \quad x:A}{f(x): \ B \ + \ C
 
 $$absurd \quad \frac{f:A \quad f:¬A}{\bot}$$
 
-$$terminal \ infer \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash X \quad y \vdash Y}{λ⟨a.b⟩⟨x.y⟩ \vdash (A \to B) + (X \to Y)}$$
+$$terminal \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash X \quad y \vdash Y}{λ⟨a.b⟩⟨x.y⟩ \vdash (A \to B) + (X \to Y)}$$
+
+$$terminal \ application \quad \frac{f \vdash (A \to B) + (C \to D) + (X \to Y) \quad x \vdash A + X}{f(x) \vdash B + Y}$$
 
 ## Notes
 
