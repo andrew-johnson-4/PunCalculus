@@ -29,6 +29,8 @@ $$terminal \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash 
 
 $$terminal \ application \quad \frac{f \vdash (A \to B) + (C \to D) + (X \to Y) \quad x \vdash A + X}{f(x) \vdash B + Y}$$
 
+$$terminal \ argument \quad \frac{f \vdash A \to B \quad f(x) \vdash B}{x \vdash A}$$
+
 ## Notes
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
