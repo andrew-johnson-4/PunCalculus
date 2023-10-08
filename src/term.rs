@@ -8,3 +8,15 @@ pub enum Term {
    App(Box<Term>,Box<Term>),
    Ascript(Box<Term>,Type) //any term can be ascripted
 }
+
+/*
+
+f(x:X) = x
+f(y:Y) = y
+...
+
+can be written as
+
+(\ <x:X.x> <y:Y.y>) ...
+
+*/
