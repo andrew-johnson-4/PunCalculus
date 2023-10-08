@@ -24,3 +24,8 @@ impl Context {
       }
    }
 }
+
+pub fn infer(t: Term) -> Term {
+   //TODO: infer
+   t
+}
