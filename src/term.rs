@@ -33,7 +33,7 @@ impl Term {
       if let Term::Ascript(ref t,_) = self {
          match **t {
             Term::Var(_) => true,
-            Term::Abs(ref arrows) => todo!("Term::is_concrete(Term::Abs)"),
+            Term::Abs(ref arrows) => arrows.iter().all(|(l,r)| l.is_concrete() && r.is_concrete()),
             Term::App(ref f,ref x) => f.is_concrete() && x.is_concrete(),
             Term::Ascript(_,_) => panic!("Term is double ascripted: {:?}", self),
          }
