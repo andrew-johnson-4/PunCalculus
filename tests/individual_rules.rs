@@ -9,7 +9,6 @@ use punc::reference_solver::infer;
 //\           | False
 //\<x.x>      | False
 //\<x.x><y.y> | False
-//x: ?        | False
 //x: \bot     | True
 //x: \top     | True
 //x: A        | True
@@ -31,4 +30,35 @@ fn single_term() {
    assert!( infer( Term::ascript(Term::var("x"),Type::arrow(Type::Top,Type::named("A"))) ).is_concrete() );
    assert!( infer( Term::ascript(Term::var("x"),Type::arrow(Type::named("A"),Type::named("B"))) ).is_concrete() );
    assert!( infer( Term::ascript(Term::var("x"),Type::plural(vec![Type::named("A"),Type::named("B")])) ).is_concrete() );
+}
+
+//\                    | \bot
+//\<x:X.y:Y>           | X->Y
+//\<a:A.b:B><x:X.y:Y>  | (A->B)+(X->Y)
+#[test]
+fn infer_arrow() {
+   assert_eq!(
+      infer( Term::Abs(vec![]) ).typ(),
+      Type::Bottom
+   );
+   assert_eq!(
+      infer( Term::Abs(vec![(
+         Term::ascript(Term::var("x"),Type::named("X")),
+         Term::ascript(Term::var("y"),Type::named("Y")),
+      )]) ).typ(),
+      Type::arrow(Type::named("X"),Type::named("Y"))
+   );
+   assert_eq!(
+      infer( Term::Abs(vec![(
+         Term::ascript(Term::var("a"),Type::named("A")),
+         Term::ascript(Term::var("b"),Type::named("B")),
+      ),(
+         Term::ascript(Term::var("x"),Type::named("X")),
+         Term::ascript(Term::var("y"),Type::named("Y")),
+      )]) ).typ(),
+      Type::plural(vec![
+         Type::arrow(Type::named("A"),Type::named("B")),
+         Type::arrow(Type::named("X"),Type::named("Y"))
+      ])
+   );
 }

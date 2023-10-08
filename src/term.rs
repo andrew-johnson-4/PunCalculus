@@ -22,6 +22,13 @@ can be written as
 */
 
 impl Term {
+   pub fn typ(&self) -> Type {
+      if let Term::Ascript(_,ref tt) = self {
+         tt.clone()
+      } else {
+         Type::Bottom
+      }
+   }
    pub fn is_concrete(&self) -> bool {
       if let Term::Ascript(ref t,_) = self {
          match **t {
