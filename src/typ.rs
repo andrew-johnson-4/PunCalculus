@@ -1,5 +1,7 @@
 
+#[derive(Debug)]
 pub enum Type {
+   Placeholder,
    Top,
    Bottom,
    Named(String),
