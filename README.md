@@ -36,8 +36,8 @@ Concrete types are types on the right of the turnstile, which every term needs a
 _Plural_ types are similar to product types plus an implicit subtyping rule: A + B ⇒ A and A + B ⇒ B.
 
 For simplicity, all bindings are modelled as morphisms.
-An "object" A can be modelled as a simple morphism 1 -> A.
-Similarly ¬A is shorthand for 0 -> A.
+An "object" A can be modelled as a simple morphism 1 → A.
+Similarly ¬A is shorthand for 0 → A.
 
 Greedy Infer is the gas. Determine Color is the brakes. The rules for graph coloring precedence can be customized. Greedy Infer may be strange to work with because making an Integer term 0 may ascribe a Type with a lot of extra information such as "1123 is prime." Obviously this comes with a steep computational cost, which makes the coloring precedence important.
 
