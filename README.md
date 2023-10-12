@@ -52,6 +52,9 @@ Some rules are termed "intermediate" because they do not immediately assign a co
 Intermediate rules are subject to coloring precedence.
 All rules that do assign a concrete type are termed "terminal."
 
+Types are either singular or plural, never both.
+If you want to turn A + B into a singular type, then you could write it as AB.
+
 The type system above is not strongly normalizing yet.
 
 ## Citations
