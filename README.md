@@ -9,15 +9,15 @@ Interactive theorem proving is too often a solo effort by either the programmer 
 
 Typechecking is a graph-coloring problem to ensure that Cannot Determine Color does not get applied to the result of Greedy Infer.
 
-$$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
+$$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
-$$always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
+$$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 
-$$into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
+$$intermediate \ into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
 
-$$out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
+$$intermediate \ out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
 
-$$application \quad \frac{f:A \to B \quad f:A \to C \quad x:A}{f(x): \ B \ + \ C}$$
+$$terminal \ application \quad \frac{f \vdash (A \to B) + (A \to C) \quad x \vdash A}{f(x) \vdash B \ + \ C}$$
 
 $$terminal \ cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C \quad x:A \quad x:B}{f(x) \vdash \bot}$$
 
@@ -43,7 +43,14 @@ For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 → A.
 Similarly ¬A is shorthand for 0 → A.
 
-Greedy Infer is the gas. Determine Color is the brakes. The rules for graph coloring precedence can be customized. Greedy Infer may be strange to work with because making an Integer term 0 may ascribe a Type with a lot of extra information such as "1123 is prime." Obviously this comes with a steep computational cost, which makes the coloring precedence important.
+Greedy Infer is the gas. Determine Color is the brakes.
+The rules for graph coloring precedence can be customized.
+Greedy Infer may be strange to work with because making an Integer term 0 may ascribe a Type with a lot of extra information such as "1123 is prime."
+Obviously this comes with a steep computational cost, which makes the coloring precedence important.
+
+Some rules are termed "intermediate" because they do not immediately assign a concrete type to any term.
+Intermediate rules are subject to coloring precedence.
+All rules that do assign a concrete type are termed "terminal."
 
 The type system above is not strongly normalizing yet.
 
