@@ -11,10 +11,6 @@ Typechecking is a graph-coloring problem to ensure that Cannot Determine Color d
 
 $$greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
-$$infer \ argument \quad \frac{f:A \to B \quad f(x):B}{x:A}$$
-
-$$cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C \quad x:A \quad x:B \quad f(x)}{\bot}$$
-
 $$always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 
 $$into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}$$
@@ -23,7 +19,11 @@ $$out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
 
 $$application \quad \frac{f:A \to B \quad f:A \to C \quad x:A}{f(x): \ B \ + \ C}$$
 
-$$absurd \quad \frac{f:A \quad f:¬A}{\bot}$$
+$$terminal \ cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C \quad x:A \quad x:B}{f(x) \vdash \bot}$$
+
+$$terminal \ absurd \quad \frac{f:A \quad f:¬A}{f \vdash \bot}$$
+
+$$terminal \ infer \ argument \quad \frac{f \vdash A \to B \quad f(x) \vdash B}{x \vdash A}$$
 
 $$terminal \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash X \quad y \vdash Y}{λ⟨a.b⟩⟨x.y⟩ \vdash (A \to B) + (X \to Y)}$$
 
