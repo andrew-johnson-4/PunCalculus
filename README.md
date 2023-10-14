@@ -60,3 +60,7 @@ The type system above is not strongly normalizing yet.
 ## Citations
 
 [A very brisk introduction to Type Theory](https://ncatlab.org/nlab/show/type+theory)
+
+**Strongly Normalizing**: some Term/Type will be normalized eventually certainly following the process
+
+[Strongly Normalizing subsets of Lambda Calculus](https://cstheory.stackexchange.com/questions/20364/how-to-make-the-lambda-calculus-strong-normalizing-without-a-type-system)
