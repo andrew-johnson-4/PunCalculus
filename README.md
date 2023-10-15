@@ -58,6 +58,8 @@ thereby limiting inference to a linear number of steps.
 Intermediate rules don't assign a concrete type, so strong normalization should be guaranteed
 either by demonstrating forward progress or adding some sort of arbitrary limit.
 
+There is no constant introduction rule, rather constants can be introduced as bound variables: `λ⟨0:Int.b⟩`.
+
 Types are either singular or plural, never both.
 If you want to turn A + B into a singular type, then you could write it as AB.
 
