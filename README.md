@@ -69,7 +69,7 @@ The type system above is not strongly normalizing yet.
 
 [A very brisk introduction to Type Theory](https://ncatlab.org/nlab/show/type+theory)
 
-## Related Work
+## Similar Work
 
 [The Kernel of Ad Hoc Polymorphism](https://dspace.mit.edu/bitstream/handle/1721.1/106072/965197677-MIT.pdf)
 
