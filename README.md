@@ -52,6 +52,11 @@ Some rules are termed "intermediate" because they do not immediately assign a co
 Intermediate rules are subject to coloring precedence.
 All rules that do assign a concrete type are termed "terminal."
 
+Traditionally strong normalization is proved by showing that all rules assign a concrete type,
+thereby limiting inference to a linear number of steps.
+Intermediate rules don't assign a concrete type, so strong normalization should be guaranteed
+either by demonstrating forward progress or adding some sort of arbitrary limit.
+
 Types are either singular or plural, never both.
 If you want to turn A + B into a singular type, then you could write it as AB.
 
