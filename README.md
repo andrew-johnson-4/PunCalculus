@@ -63,8 +63,6 @@ either by demonstrating forward progress or adding some sort of arbitrary limit.
 Types are either singular or plural, never both.
 If you want to turn A + B into a singular type, then you could write it as AB.
 
-The type system above is not strongly normalizing yet.
-
 ## Direct Citations
 
 [A very brisk introduction to Type Theory](https://ncatlab.org/nlab/show/type+theory)
