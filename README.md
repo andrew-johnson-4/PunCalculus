@@ -32,9 +32,9 @@ $$terminal \ infer \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \
 
 $$terminal \ abstraction \quad \frac{\Gamma \vdash a:A \quad \Gamma \vdash b:B \quad \Gamma \vdash x:X \quad \Gamma \vdash y:Y \quad λ⟨a.b⟩⟨x.y⟩}{\Gamma \vdash λ⟨a.b⟩⟨x.y⟩:(A \to B) + (X \to Y)}$$
 
-$$terminal \ application \quad \frac{f \vdash (A \to B) + (C \to D) + (X \to Y) \quad x \vdash A + X}{f(x) \vdash B + Y}$$
+$$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (C \to D) + (X \to Y) \quad \Gamma \vdash x:A + X \quad f(x)}{\Gamma \vdash f(x):B + Y}$$
 
-$$terminal \ argument \quad \frac{f \vdash A \to B \quad f(x) \vdash B}{x \vdash A}$$
+$$terminal \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \vdash f(x):B}{\Gamma \vdash x:A}$$
 
 ## Notes
 
