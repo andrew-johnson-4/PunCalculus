@@ -65,9 +65,13 @@ If you want to turn A + B into a singular type, then you could write it as AB.
 
 The type system above is not strongly normalizing yet.
 
-## Citations
+## Direct Citations
 
 [A very brisk introduction to Type Theory](https://ncatlab.org/nlab/show/type+theory)
+
+## Related Work
+
+[The Kernel of Ad Hoc Polymorphism](https://dspace.mit.edu/bitstream/handle/1721.1/106072/965197677-MIT.pdf)
 
 ## Possible Extensions
 
