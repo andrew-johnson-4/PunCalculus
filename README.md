@@ -22,9 +22,9 @@ $$intermediate \ out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:
 
 TODO: migrate intermediate results across the turnstile
 
-$$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (A \to C) \quad \Gamma \vdash x:A}{\Gamma \vdash f(x):B \ + \ C}$$
+$$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (A \to C) \quad \Gamma \vdash x:A \quad f(x)}{\Gamma \vdash f(x):B \ + \ C}$$
 
-$$terminal \ cannot \ determine \ color \quad \frac{f \vdash (A \to B) + (B \to C) + (A \to C) \quad x \vdash A + B \quad f(x)}{f(x) \vdash \bot}$$
+$$terminal \ cannot \ determine \ color \quad \frac{\Gamma \vdash f:(A \to B) + (B \to C) + (A \to C) \quad \Gamma \vdash x:A + B \quad f(x)}{f(x) \vdash \bot}$$
 
 $$terminal \ absurd \quad \frac{f:A \quad f:¬A}{f \vdash \bot}$$
 
