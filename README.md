@@ -6,7 +6,7 @@ A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc pol
 Ad-Hoc Polymorphism is introduced to the Simply Typed Lambda Calculus by pluralizing lambda abstractions.
 Terms such as `λx:X. y` are represented instead as `λ⟨x:X. y⟩`.
 Plural abstractions are represented with more braces: `λ⟨a:A. b⟩⟨x:X. y⟩`.
-The type system is then extended to provide a suprisingly rich set of logical primitives.
+The type system is then extended to provide a surprisingly rich set of logical primitives.
 
 ## Types
 
