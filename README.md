@@ -26,9 +26,9 @@ $$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (A \to C) \quad
 
 $$terminal \ cannot \ determine \ color \quad \frac{\Gamma \vdash f:(A \to B) + (B \to C) + (A \to C) \quad \Gamma \vdash x:A + B \quad f(x)}{f(x) \vdash \bot}$$
 
-$$terminal \ absurd \quad \frac{f:A \quad f:¬A}{f \vdash \bot}$$
+$$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 
-$$terminal \ infer \ argument \quad \frac{f \vdash A \to B \quad f(x) \vdash B}{x \vdash A}$$
+$$terminal \ infer \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \vdash f(x):B}{\Gamma \vdash x:A}$$
 
 $$terminal \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash X \quad y \vdash Y}{λ⟨a.b⟩⟨x.y⟩ \vdash (A \to B) + (X \to Y)}$$
 
