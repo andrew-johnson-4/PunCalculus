@@ -1,7 +1,9 @@
 
 #[macro_export]
 macro_rules! punc {
-   ($i:ident) => { Term::var(stringify!($i)) };
+   (( $($i:tt)+ )) => { punc!($($i)*) };
+   ( $i:ident ) => { Term::var(stringify!($i)) };
+   ( $i:ident $($j:tt)+ ) => { Term::app( Term::var(stringify!($i)), punc!($($j)*) ) };
 }
 
 pub mod term;

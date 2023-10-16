@@ -8,6 +8,45 @@ fn var() {
    )
 }
 
+#[test]
+fn app1() {
+   assert_eq!(
+      punc!( x y ),
+      Term::app(
+         Term::var("x"),
+         Term::var("y")
+      )
+   )
+}
+
+#[test]
+fn app2() {
+   assert_eq!(
+      punc!( x y z ),
+      Term::app(
+         Term::var("x"),
+         Term::app(
+            Term::var("y"),
+            Term::var("z")
+         ),
+      )
+   )
+}
+
+#[test]
+fn app3() {
+   assert_eq!(
+      punc!( x (y z) ),
+      Term::app(
+         Term::var("x"),
+         Term::app(
+            Term::var("y"),
+            Term::var("z")
+         ),
+      )
+   )
+}
+
 /*
 #[test]
 fn abs1() {
@@ -39,45 +78,6 @@ fn abs3() {
          Term::var("x"),
          Term::var("y")
       )])
-   )
-}
-
-#[test]
-fn app1() {
-   assert_eq!(
-      punc!( x y ),
-      Term::app(
-         Term::var("x"),
-         Term::var("y")
-      )
-   )
-}
-
-#[test]
-fn app2() {
-   assert_eq!(
-      punc!( x y z ),
-      Term::app(
-         Term::app(
-            Term::var("x"),
-            Term::var("y"),
-         ),
-         Term::var("z")
-      )
-   )
-}
-
-#[test]
-fn app3() {
-   assert_eq!(
-      punc!( x (y z) ),
-      Term::app(
-         Term::var("x"),
-         Term::app(
-            Term::var("y"),
-            Term::var("z")
-         ),
-      )
    )
 }
 
