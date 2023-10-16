@@ -57,7 +57,7 @@ Example carry (plural value yields plural):
 
 It may often be desirable to entirely prevent plural values.
 This would require the type system to show that no splits will happen, which are always the root cause of plural values.
-Notice that plural types correspond directly to plural values.
+Notice that plural types always have plural values.
 
 $$ban \ plurals \quad \frac{\Gamma \vdash f:(A \to B)+(A \to C) \quad \Gamma \vdash x:A \quad \Gamma \vdash f(x)}{\Gamma \vdash \bot}$$
 
