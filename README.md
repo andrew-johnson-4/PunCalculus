@@ -53,6 +53,12 @@ Example carry (plural value yields plural):
 ⟨True⟩⟨3⟩
 ```
 
+## Optional Constraints
+
+It may often be desirable to entirely prevent plural values.
+This would require the type system to show that no splits will happen, which are always the root cause of plural values.
+Notice though that plural types can still be used to describe singular values, such as `3: Int + Prime`.
+
 ## Notes
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
