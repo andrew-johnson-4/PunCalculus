@@ -36,7 +36,7 @@ Example:
 ```punc
 λ⟨a:Int.True⟩⟨x:Int.x⟩ 3
 ---------------------------------
-True+3
+⟨True⟩⟨3⟩
 ```
 
 ## Notes
