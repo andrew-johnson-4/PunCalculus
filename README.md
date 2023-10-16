@@ -6,7 +6,7 @@ A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc pol
 Ad-Hoc Polymorphism is introduced to the Simply Typed Lambda Calculus by pluralizing lambda abstractions.
 Terms such as `λx:X. y` are represented instead as `λ⟨x:X. y⟩`.
 Plural abstractions are represented with more braces: `λ⟨a:A. b⟩⟨x:X. y⟩`.
-The type system is then extended to provide a suprisingly rich set of logical primitives.
+The type system is then extended to provide a surprisingly rich set of logical primitives.
 
 ## Types
 
@@ -20,19 +20,17 @@ $$intermediate \ into \ DeMorgan \quad \frac{f:¬A \quad f:¬B}{f:¬(A \ + \ B)}
 
 $$intermediate \ out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:¬B}$$
 
-$$terminal \ application \quad \frac{f \vdash (A \to B) + (A \to C) \quad x \vdash A}{f(x) \vdash B \ + \ C}$$
+TODO: migrate intermediate results across the turnstile
 
-$$terminal \ cannot \ determine \ color \quad \frac{f:A \to B \quad f:B \to C \quad f:A \to C \quad x:A \quad x:B}{f(x) \vdash \bot}$$
+$$terminal \ cannot \ determine \ color \quad \frac{\Gamma \vdash f:(A \to B) + (B \to C) + (A \to C) \quad \Gamma \vdash x:A + B \quad f(x)}{\Gamma \vdash \bot}$$
 
-$$terminal \ absurd \quad \frac{f:A \quad f:¬A}{f \vdash \bot}$$
+$$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 
-$$terminal \ infer \ argument \quad \frac{f \vdash A \to B \quad f(x) \vdash B}{x \vdash A}$$
+$$terminal \ infer \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \vdash f(x):B}{\Gamma \vdash x:A}$$
 
-$$terminal \ abstraction \quad \frac{a \vdash A \quad b \vdash B \quad x \vdash X \quad y \vdash Y}{λ⟨a.b⟩⟨x.y⟩ \vdash (A \to B) + (X \to Y)}$$
+$$terminal \ abstraction \quad \frac{\Gamma \vdash a:A \quad \Gamma \vdash b:B \quad \Gamma \vdash x:X \quad \Gamma \vdash y:Y \quad λ⟨a.b⟩⟨x.y⟩}{\Gamma \vdash λ⟨a.b⟩⟨x.y⟩:(A \to B) + (X \to Y)}$$
 
-$$terminal \ application \quad \frac{f \vdash (A \to B) + (C \to D) + (X \to Y) \quad x \vdash A + X}{f(x) \vdash B + Y}$$
-
-$$terminal \ argument \quad \frac{f \vdash A \to B \quad f(x) \vdash B}{x \vdash A}$$
+$$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (C \to D) + (X \to Y) \quad \Gamma \vdash x:A + X \quad f(x)}{\Gamma \vdash f(x):B + Y}$$
 
 ## Notes
 
@@ -59,6 +57,8 @@ Traditionally strong normalization is proved by showing that all rules assign a 
 thereby limiting inference to a linear number of steps.
 Intermediate rules don't assign a concrete type, so strong normalization should be guaranteed
 either by demonstrating forward progress or adding some sort of arbitrary limit.
+
+There is no constant introduction rule, rather constants can be introduced as bound variables: `λ⟨0:Int.b⟩`.
 
 Types are either singular or plural, never both.
 If you want to turn A + B into a singular type, then you could write it as AB.
