@@ -59,6 +59,8 @@ It may often be desirable to entirely prevent plural values.
 This would require the type system to show that no splits will happen, which are always the root cause of plural values.
 Notice that plural types correspond directly to plural values.
 
+$$ban \ plurals \quad \frac{\Gamma \vdash f:(A \to B)+(A \to C) \quad \Gamma \vdash x:A \quad \Gamma \vdash f(x)}{\Gamma \vdash \bot}$$
+
 ## Notes
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
