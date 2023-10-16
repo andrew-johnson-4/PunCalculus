@@ -58,7 +58,6 @@ Example carry (plural value yields plural):
 It may often be desirable to entirely prevent plural values.
 This would require the type system to show that no splits will happen, which are always the root cause of plural values.
 Notice that plural types correspond directly to plural values.
-Eliminating plural types will eliminate plural values.
 
 ## Notes
 
