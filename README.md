@@ -30,7 +30,7 @@ $$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (C \to D) + (X 
 
 ## Evaluation
 
-Rules for evaluation are mostly the same as lambda calculus with the exception of plural arrows that may *carry* multiple values at a time.
+Rules for evaluation are mostly the same as lambda calculus with the exception of plural arrows that may *carry* multiple values at a time. This feature leads to the possibility of plural values which may diverge in new ways.
 
 Example:
 ```punc
