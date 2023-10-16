@@ -9,7 +9,7 @@ pub fn infer(t: Term) -> Term {
    if let Term::Abs(ref arrows) = t {
       let mut computed_type = Vec::new();
       for (l,r) in arrows {
-         if let (Term::Asc(l,lt),Term::Asc(r,rt)) = (l,r) {
+         if let (Term::Asc(_l,lt),Term::Asc(_r,rt)) = (l,r) {
             computed_type.push(Type::Arrow(Box::new(lt.clone()),Box::new(rt.clone())));
          } else {
             return t;

@@ -1,7 +1,7 @@
 
 use crate::typ::Type;
 
-#[derive(Debug)]
+#[derive(Debug,PartialEq,Eq)]
 pub enum Term {
    Var(String),
    Abs(Vec<(Term,Term)>), //lambdas are potentially plural, \ <a.x> <b.y> <c.z>

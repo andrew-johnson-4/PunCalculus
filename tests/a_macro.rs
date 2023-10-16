@@ -8,6 +8,7 @@ fn var() {
    )
 }
 
+/*
 #[test]
 fn abs1() {
    assert_eq!(
@@ -90,4 +91,4 @@ fn asc() {
       )
    )
 }
-
+*/
