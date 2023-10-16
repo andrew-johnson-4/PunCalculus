@@ -32,6 +32,10 @@ $$terminal \ abstraction \quad \frac{\Gamma \vdash a:A \quad \Gamma \vdash b:B \
 
 $$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (C \to D) + (X \to Y) \quad \Gamma \vdash x:A + X \quad f(x)}{\Gamma \vdash f(x):B + Y}$$
 
+## Evaluation
+
+Rules for evaluation are mostly the same as lambda calculus with the exception of plural arrows that may *carry* more than one value at a time.
+
 ## Notes
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
