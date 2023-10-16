@@ -32,11 +32,18 @@ $$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (C \to D) + (X 
 
 Rules for evaluation are mostly the same as lambda calculus with the exception of plural arrows that may *carry* multiple values at a time. This feature leads to the possibility of plural values which may diverge in new ways.
 
-Example:
+Example split:
 ```punc
 λ⟨a:Int.True⟩⟨x:Int.x⟩ 3
 ---------------------------------
 ⟨True⟩⟨3⟩
+```
+
+Example merge:
+```punc
+λ⟨a:Bool.2⟩⟨x:Int.2⟩ (⟨False⟩⟨5⟩)
+---------------------------------
+⟨2⟩
 ```
 
 ## Notes
