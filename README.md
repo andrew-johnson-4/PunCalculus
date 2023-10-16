@@ -46,6 +46,13 @@ Example merge:
 ⟨2⟩
 ```
 
+Example carry:
+```punc
+λ⟨a:Bool.not a⟩⟨x:Int.- x 2⟩ (⟨False⟩⟨5⟩)
+---------------------------------
+⟨True⟩⟨3⟩
+```
+
 ## Notes
 
 _Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
