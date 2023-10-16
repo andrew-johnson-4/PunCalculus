@@ -34,7 +34,7 @@ Rules for evaluation are mostly the same as lambda calculus with the exception o
 
 Example:
 ```punc
-(λ⟨a:Int.True⟩⟨x:Int.x⟩) 3
+λ⟨a:Int.True⟩⟨x:Int.x⟩ 3
 ---------------------------------
 True+3
 ```
