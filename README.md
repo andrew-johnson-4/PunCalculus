@@ -66,6 +66,8 @@ For this reason, the Cannot Determine Color rule fails when it is incapable of d
 Concrete types are types on the right of the turnstile, which every term needs and is the terminal state of typechecking.
 
 _Plural_ types are similar to product types plus an implicit subtyping rule: A + B ⇒ A and A + B ⇒ B.
+Plural types correspond to plural values.
+If you want to create a subtype relationship `Prime => Int`, then use the subtype name `Prime`.
 
 For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 → A.
@@ -100,4 +102,5 @@ If you want to turn A + B into a singular type, then you could write it as AB.
 
 ## Possible Extensions
 
-[Strongly Normalizing subsets of Lambda Calculus](https://cstheory.stackexchange.com/questions/20364/how-to-make-the-lambda-calculus-strong-normalizing-without-a-type-system)
+* Subtyping
+* [Strongly Normalizing subsets of Lambda Calculus](https://cstheory.stackexchange.com/questions/20364/how-to-make-the-lambda-calculus-strong-normalizing-without-a-type-system)
