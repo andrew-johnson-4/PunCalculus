@@ -81,7 +81,7 @@ fn abs3() {
 }
 
 #[test]
-fn asc() {
+fn asc1() {
    assert_eq!(
       punc!( x: X ),
       Term::asc(
@@ -92,7 +92,7 @@ fn asc() {
 }
 
 #[test]
-fn asc() {
+fn asc2() {
    assert_eq!(
       punc!( λ[x:X.y:Y] ),
       Term::abs(vec![(
