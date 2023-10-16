@@ -47,7 +47,6 @@ fn app3() {
    )
 }
 
-/*
 #[test]
 fn abs1() {
    assert_eq!(
@@ -59,7 +58,7 @@ fn abs1() {
 #[test]
 fn abs2() {
    assert_eq!(
-      punc!( λ<x. y> ),
+      punc!( λ[x . y] ),
       Term::abs(vec![(
          Term::var("x"),
          Term::var("y")
@@ -70,7 +69,7 @@ fn abs2() {
 #[test]
 fn abs3() {
    assert_eq!(
-      punc!( λ<a.b><x. y> ),
+      punc!( λ[a.b][x. y] ),
       Term::abs(vec![(
          Term::var("a"),
          Term::var("b")
@@ -91,4 +90,20 @@ fn asc() {
       )
    )
 }
-*/
+
+#[test]
+fn asc() {
+   assert_eq!(
+      punc!( λ[x:X.y:Y] ),
+      Term::abs(vec![(
+         Term::asc(
+            Term::var("x"),
+            Type::named("X")
+         ),
+         Term::asc(
+            Term::var("y"),
+            Type::named("Y")
+         )
+      )])
+   )
+}
