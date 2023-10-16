@@ -10,8 +10,6 @@ The type system is then extended to provide a surprisingly rich set of logical p
 
 ## Types
 
-Typechecking is a graph-coloring problem to ensure that Cannot Determine Color does not get applied to the result of Greedy Infer.
-
 $$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 
 $$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
@@ -22,8 +20,6 @@ $$intermediate \ out \ of \ DeMorgan \quad \frac{f:¬(A \ + \ B)}{f:¬A \quad f:
 
 TODO: migrate intermediate results across the turnstile
 
-$$terminal \ cannot \ determine \ color \quad \frac{\Gamma \vdash f:(A \to B) + (B \to C) + (A \to C) \quad \Gamma \vdash x:A + B \quad f(x)}{\Gamma \vdash \bot}$$
-
 $$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 
 $$terminal \ infer \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \vdash f(x):B}{\Gamma \vdash x:A}$$
@@ -31,6 +27,17 @@ $$terminal \ infer \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \
 $$terminal \ abstraction \quad \frac{\Gamma \vdash a:A \quad \Gamma \vdash b:B \quad \Gamma \vdash x:X \quad \Gamma \vdash y:Y \quad λ⟨a.b⟩⟨x.y⟩}{\Gamma \vdash λ⟨a.b⟩⟨x.y⟩:(A \to B) + (X \to Y)}$$
 
 $$terminal \ application \quad \frac{\Gamma \vdash f:(A \to B) + (C \to D) + (X \to Y) \quad \Gamma \vdash x:A + X \quad f(x)}{\Gamma \vdash f(x):B + Y}$$
+
+## Evaluation
+
+Rules for evaluation are mostly the same as lambda calculus with the exception of plural arrows that may *carry* multiple values at a time. This feature leads to the possibility of plural values which may diverge in new ways.
+
+Example:
+```punc
+λ⟨a:Int.True⟩⟨x:Int.x⟩ 3
+---------------------------------
+⟨True⟩⟨3⟩
+```
 
 ## Notes
 
