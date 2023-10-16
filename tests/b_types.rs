@@ -1,4 +1,4 @@
-use ::punc::{punc,Term,Type};
+use ::punc::*;
 
 #[test]
 fn structural_equality() {
@@ -26,7 +26,7 @@ fn structural_equality() {
    );
 
    assert_eq!(
-      punc!( a: A->B ).typ(),
+      punc!( a: (A->B) ).typ(),
       Type::arrow(
          Type::named("A"),
          Type::named("B")

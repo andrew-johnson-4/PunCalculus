@@ -18,4 +18,13 @@ impl Type {
    pub fn plural(ts: Vec<Type>) -> Type {
       Type::Plural(ts)
    }
+   pub fn cons(head: Type, tail: Type) -> Type {
+      let mut tail = if let Type::Plural(t) = tail {
+         t
+      } else {
+         vec![tail]
+      };
+      tail.insert(0, head);
+      Type::Plural( tail )
+   }
 }

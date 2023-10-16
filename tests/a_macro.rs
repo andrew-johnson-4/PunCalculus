@@ -1,4 +1,4 @@
-use ::punc::{punc,Term,Type};
+use ::punc::*;
 
 #[test]
 fn var() {
