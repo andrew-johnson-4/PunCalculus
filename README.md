@@ -63,10 +63,6 @@ $$ban \ plurals \quad \frac{\Gamma \vdash f:(A \to B)+(A \to C) \quad \Gamma \vd
 
 ## Notes
 
-_Concrete_ types are never ambiguous, they get collapsed into at most a plural type.
-For this reason, the Cannot Determine Color rule fails when it is incapable of determining the concrete type.
-Concrete types are types on the right of the turnstile, which every term needs and is the terminal state of typechecking.
-
 _Plural_ types are similar to product types plus an implicit subtyping rule: A + B ⇒ A and A + B ⇒ B.
 Plural types correspond to plural values.
 If you want to create a subtype relationship `Prime => Int`, then use the subtype name `Prime`.
