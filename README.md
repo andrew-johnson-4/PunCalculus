@@ -63,10 +63,6 @@ $$ban \ plurals \quad \frac{\Gamma \vdash f:(A \to B)+(A \to C) \quad \Gamma \vd
 
 ## Notes
 
-_Plural_ types are similar to product types plus an implicit subtyping rule: A + B ⇒ A and A + B ⇒ B.
-Plural types correspond to plural values.
-If you want to create a subtype relationship `Prime => Int`, then use the subtype name `Prime`.
-
 For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 → A.
 Similarly ¬A is shorthand for 0 → A.
