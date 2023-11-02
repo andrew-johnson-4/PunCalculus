@@ -67,6 +67,8 @@ For simplicity, all bindings are modelled as morphisms.
 An "object" A can be modelled as a simple morphism 1 → A.
 Similarly ¬A is shorthand for 0 → A.
 
+"Plural Types" are similar to product types with the implicit subtyping relations that `A + B ⇒ A` and `A + B ⇒ B`.
+
 Some rules are termed "intermediate" because they do not immediately assign a concrete type to any term.
 Intermediate rules are subject to coloring precedence.
 All rules that do assign a concrete type are termed "terminal."
