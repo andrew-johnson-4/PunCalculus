@@ -8,6 +8,13 @@ Terms such as `λx:X. y` are represented instead as `λ⟨x:X. y⟩`.
 Plural abstractions are represented with more braces: `λ⟨a:A. b⟩⟨x:X. y⟩`.
 The type system is then extended to provide a surprisingly rich set of logical primitives.
 
+## Motivation
+
+In the LSTS proof assistant, it became apparent that plural abstractions are valuable.
+This was observed in simple function applications `f(x)` where the function candidates could prove multiple properties depending on properties of the input.
+This was the immediate origin of the concept of "plural" arrows that can carry multiple properties.
+PunC is an attempt to generalize this practice before upgrading the LSTS framework.
+
 ## Types
 
 $$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
