@@ -13,7 +13,7 @@ The type system is then extended to provide a surprisingly rich set of logical p
 In the LSTS proof assistant, it became apparent that plural abstractions are valuable.
 This was observed in simple function applications `f(x)` where the function candidates could prove multiple properties depending on properties of the input.
 This was the immediate origin of the concept of "plural" arrows that can carry multiple properties.
-PunC is an attempt to generalize this practice before upgrading the LSTS framework.
+PunC is an attempt to generalize this idea before upgrading the LSTS framework.
 
 ## Types
 
