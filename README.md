@@ -99,4 +99,5 @@ If you want to turn A + B into a singular type, then you could write it as AB.
 ## Possible Extensions
 
 * Subtyping
+* Dependent Types
 * [Strongly Normalizing subsets of Lambda Calculus](https://cstheory.stackexchange.com/questions/20364/how-to-make-the-lambda-calculus-strong-normalizing-without-a-type-system)
