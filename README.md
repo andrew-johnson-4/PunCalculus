@@ -17,10 +17,6 @@ PunC is an attempt to generalize this idea before upgrading the LSTS framework.
 
 ## Types
 
-$$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
-
-$$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
-
 $$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 
 $$terminal \ infer \ argument \quad \frac{\Gamma \vdash f:A \to B \quad \Gamma \vdash f(x):B}{\Gamma \vdash x:A}$$
@@ -64,21 +60,7 @@ $$ban \ plurals \quad \frac{\Gamma \vdash f:(A \to B)+(A \to C) \quad \Gamma \vd
 
 ## Notes
 
-For simplicity, all bindings are modelled as morphisms.
-An "object" A can be modelled as a simple morphism 1 → A.
-Similarly ¬A is shorthand for 0 → A.
-
 "Plural Types" are similar to product types plus the implicit subtyping relations that `A + B ⇒ A` and `A + B ⇒ B`.
-
-Some rules are termed "intermediate" because they do not immediately assign a concrete type to any term.
-Intermediate rules are subject to coloring precedence.
-All rules that do assign a concrete type are termed "terminal."
-
-Traditionally strong normalization is proved by showing that all rules assign a concrete type,
-thereby limiting inference to a linear number of steps.
-Intermediate rules don't assign a concrete type, so strong normalization should be guaranteed
-either by demonstrating forward progress or adding some sort of arbitrary limit.
-
 Types are either singular or plural, never both.
 If you want to turn A + B into a singular type, then you could write it as AB.
 
@@ -92,6 +74,8 @@ If you want to turn A + B into a singular type, then you could write it as AB.
 
 ## Possible Extensions
 
+* $$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
+* $$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 * Subtyping
 * Dependent Types
 * [Strongly Normalizing subsets of Lambda Calculus](https://cstheory.stackexchange.com/questions/20364/how-to-make-the-lambda-calculus-strong-normalizing-without-a-type-system)
