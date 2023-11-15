@@ -55,6 +55,8 @@ Notice that plural types always have plural values.
 
 $$ban \ plurals \quad \frac{\Gamma \vdash f:(A \to B)+(A \to C) \quad \Gamma \vdash x:A \quad \Gamma \vdash f(x)}{\Gamma \vdash \bot}$$
 
+Banning plurals still permits ad-hoc polymorphism in the *either-or* cases.
+
 ## Notes
 
 "Plural Types" are similar to product types plus the implicit subtyping relations that `A + B ⇒ A` and `A + B ⇒ B`.
