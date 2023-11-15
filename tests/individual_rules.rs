@@ -23,7 +23,7 @@ fn single_term() {
    assert!( !Term::abs(vec![]).is_concrete() );
    assert!( !Term::abs(vec![ (Term::var("x"),Term::var("x")) ]).is_concrete() );
    assert!( !Term::abs(vec![ (Term::var("x"),Term::var("x")), (Term::var("y"),Term::var("y")) ]).is_concrete() );
-   assert!( Term::asc(Term::var("x"),Type::Bottom).is_concrete() );
+   assert!( !Term::asc(Term::var("x"),Type::Bottom).is_concrete() );
    assert!( Term::asc(Term::var("x"),Type::Top).is_concrete() );
    assert!( Term::asc(Term::var("x"),Type::named("A")).is_concrete() );
    assert!( Term::asc(Term::var("x"),Type::arrow(Type::Bottom,Type::named("A"))).is_concrete() );
