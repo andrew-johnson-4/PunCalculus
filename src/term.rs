@@ -1,5 +1,6 @@
 
 use crate::typ::Type;
+use crate::reference_solver::infer;
 
 #[derive(Debug,PartialEq,Eq,Clone)]
 pub enum Term {
@@ -42,7 +43,7 @@ impl Term {
       }
    }
    pub fn infer(&self) -> Term {
-      self.clone()
+      infer(self.clone())
    }
    pub fn var(s: &str) -> Term {
       Term::Var(s.to_string())

@@ -11,3 +11,4 @@ keywords = ["pun","calculus"]
 
 [dependencies]
 regex = { version = "1" }
+im-lists   = { version = "0.4" }

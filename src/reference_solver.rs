@@ -1,28 +1,20 @@
 
 use crate::term::Term;
 use crate::typ::Type;
+use im_lists::list::List;
 
 //complex plural contexts are no longer needed
 //just use a linked list
 
-pub fn infer(t: Term) -> Term {
-   if let Term::Abs(ref arrows) = t {
-      let mut computed_type = Vec::new();
-      for (l,r) in arrows {
-         if let (Term::Asc(_l,lt),Term::Asc(_r,rt)) = (l,r) {
-            computed_type.push(Type::Arrow(Box::new(lt.clone()),Box::new(rt.clone())));
-         } else {
-            return t;
-         }
-      }
-      if computed_type.len()==0 {
-         Term::asc(t,Type::Bottom)
-      } else if computed_type.len()==1 {
-         Term::asc(t,computed_type[0].clone())
-      } else {
-         Term::asc(t,Type::plural(computed_type))
-      }
-   } else {
-      t
+pub fn infer(mut t: Term) -> Term {
+   let mut next_t = infer_one_pass(List::new(), &t);
+   while t != next_t {
+      t = next_t;
+      next_t = infer_one_pass(List::new(), &t);
    }
+   t
+}
+
+pub fn infer_one_pass(ctx: List<(String,Term)>, t: &Term) -> Term {
+   t.clone()
 }
