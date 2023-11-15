@@ -1,7 +1,7 @@
 
 use crate::typ::Type;
 
-#[derive(Debug,PartialEq,Eq)]
+#[derive(Debug,PartialEq,Eq,Clone)]
 pub enum Term {
    Var(String),
    Abs(Vec<(Term,Term)>), //lambdas are potentially plural, \ <a.x> <b.y> <c.z>
@@ -40,6 +40,9 @@ impl Term {
       } else {
          false
       }
+   }
+   pub fn infer(&self) -> Term {
+      self.clone()
    }
    pub fn var(s: &str) -> Term {
       Term::Var(s.to_string())

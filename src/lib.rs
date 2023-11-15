@@ -31,11 +31,12 @@ macro_rules! punc {
          ),*
       ])
    };
-   (( $($i:tt)+ ) : $($t:tt)* ) => { Term::asc( punc!($($i)*), punc_type!($($t)*) ) };
-   (( $($i:tt)+ )) => { punc!($($i)*) };
+   ( $i:tt : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
+   ( $i:tt ( $($j:tt)* ) ) => { Term::app( punc!($i), punc!($($j)*) ) };
    ( $i:ident : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
    ( $i:ident ) => { Term::var(stringify!($i)) };
    ( $i:ident $($j:tt)+ ) => { Term::app( Term::var(stringify!($i)), punc!($($j)*) ) };
+   (( $($i:tt)+ )) => { punc!($($i)*) };
 }
 
 pub mod term;
