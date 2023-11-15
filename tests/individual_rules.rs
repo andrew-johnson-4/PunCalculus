@@ -38,18 +38,18 @@ fn single_term() {
 #[test]
 fn infer_arrow() {
    assert_eq!(
-      infer( Term::Abs(vec![]) ).typ(),
+      infer( Term::abs(vec![]) ).typ(),
       Type::Bottom
    );
    assert_eq!(
-      infer( Term::Abs(vec![(
+      infer( Term::abs(vec![(
          Term::asc(Term::var("x"),Type::named("X")),
          Term::asc(Term::var("y"),Type::named("Y")),
       )]) ).typ(),
       Type::arrow(Type::named("X"),Type::named("Y"))
    );
    assert_eq!(
-      infer( Term::Abs(vec![(
+      infer( Term::abs(vec![(
          Term::asc(Term::var("a"),Type::named("A")),
          Term::asc(Term::var("b"),Type::named("B")),
       ),(

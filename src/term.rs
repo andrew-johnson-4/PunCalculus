@@ -4,57 +4,39 @@ use crate::reference_solver::infer;
 
 #[derive(Debug,PartialEq,Eq,Clone)]
 pub enum Term {
-   Var(String),
-   Abs(Vec<(Term,Term)>), //lambdas are potentially plural, \ <a.x> <b.y> <c.z>
-   App(Box<Term>,Box<Term>),
-   Asc(Box<Term>,Type) //any term can be ascripted
+   Var(String,Type),
+   Abs(Vec<(Term,Term)>,Type), //lambdas are potentially plural, \ <a.x> <b.y> <c.z>
+   App(Box<Term>,Box<Term>,Type),
 }
-
-/*
-
-f(x:X) = x
-f(y:Y) = y
-...
-
-can be written as
-
-(\ <x:X.x> <y:Y.y>) ...
-
-*/
 
 impl Term {
    pub fn typ(&self) -> Type {
-      if let Term::Asc(_,ref tt) = self {
-         tt.clone()
-      } else {
-         Type::Bottom
+      match self {
+         Term::Var(_,tt) => tt.clone(),
+         Term::Abs(_,tt) => tt.clone(),
+         Term::App(_,_,tt) => tt.clone(),
       }
    }
    pub fn is_concrete(&self) -> bool {
-      if let Term::Asc(ref t,_) = self {
-         match **t {
-            Term::Var(_) => true,
-            Term::Abs(ref arrows) => arrows.iter().all(|(l,r)| l.is_concrete() && r.is_concrete()),
-            Term::App(ref f,ref x) => f.is_concrete() && x.is_concrete(),
-            Term::Asc(_,_) => panic!("Term is double ascripted: {:?}", self),
-         }
-      } else {
-         false
-      }
+      self.typ() != Type::Bottom
    }
    pub fn infer(&self) -> Term {
       infer(self.clone())
    }
    pub fn var(s: &str) -> Term {
-      Term::Var(s.to_string())
+      Term::Var(s.to_string(),Type::Bottom)
    }
    pub fn abs(ts: Vec<(Term,Term)>) -> Term {
-      Term::Abs(ts)
+      Term::Abs(ts,Type::Bottom)
    }
    pub fn app(f: Term, x: Term) -> Term {
-      Term::App(Box::new(f),Box::new(x))
+      Term::App(Box::new(f),Box::new(x),Type::Bottom)
    }
    pub fn asc(t: Term, tt: Type) -> Term {
-      Term::Asc(Box::new(t), tt)
+      match t {
+         Term::Var(v,_) => Term::Var(v,tt),
+         Term::Abs(a,_) => Term::Abs(a,tt),
+         Term::App(f,x,_) => Term::App(f,x,tt),
+      }
    }
 }
