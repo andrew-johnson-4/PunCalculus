@@ -19,12 +19,46 @@ fn narrow_application_argument() {
 
 //narrow application function
 //(f: A -> B + C -> D)(x: A): B
+#[test]
+fn narrow_application_function() {
+   assert_eq!(
+      punc!( (f: (A -> B) + (C -> D))(x: A)  ).infer().typ(),
+      Type::named("B")
+   )
+}
 
 //split application
 //(f: A -> B + A -> C)(x: A): B + C
+#[test]
+fn split_application_function() {
+   assert_eq!(
+      punc!( (f: (A -> B) + (A -> C))(x: A)  ).infer().typ(),
+      Type::plural(vec![
+         Type::named("B"),
+         Type::named("C"),
+      ])
+   )
+}
 
 //merge application
-//(f: A -> C + B -> C)(x: B + C): C
+//(f: A -> C + B -> C)(x: A + B): C
+#[test]
+fn merge_application_function() {
+   assert_eq!(
+      punc!( (f: (A -> C) + (B -> C))(x: A + B)  ).infer().typ(),
+      Type::named("C"),
+   )
+}
 
 //carry application
-//(F: A -> B + C -> D)(x: A + C): B + D
+//(f: A -> B + C -> D)(x: A + C): B + D
+#[test]
+fn carry_application_function() {
+   assert_eq!(
+      punc!( (f: (A -> B) + (C -> D))(x: A + C)  ).infer().typ(),
+      Type::plural(vec![
+         Type::named("B"),
+         Type::named("D"),
+      ])
+   )
+}

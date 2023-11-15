@@ -62,3 +62,18 @@ fn infer_arrow() {
       ])
    );
 }
+
+//\<x:X.x>             | \<x:X.x:X>
+#[test]
+fn infer_var() {
+   assert_eq!(
+      infer( Term::abs(vec![(
+         Term::asc(Term::var("x"),Type::named("X")),
+         Term::var("x"),
+      )]) ),
+      Term::asc( Term::abs(vec![(
+         Term::asc(Term::var("x"),Type::named("X")),
+         Term::asc(Term::var("x"),Type::named("X")),
+      )]), Type::arrow(Type::named("X"),Type::named("X")))
+   );
+}
