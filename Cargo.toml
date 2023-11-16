@@ -1,6 +1,6 @@
 [package]
 name = "punc"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Andrew <andrew@subarctic.org>"]
 license = "MIT"
 description = "Pun Calculus"
@@ -10,5 +10,4 @@ repository = "https://github.com/andrew-johnson-4/PunCalculus"
 keywords = ["pun","calculus"]
 
 [dependencies]
-regex = { version = "1" }
 im-lists   = { version = "0.4" }
