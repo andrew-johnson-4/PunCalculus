@@ -59,7 +59,7 @@ Banning plurals still permits ad-hoc polymorphism in the *either-or* cases.
 
 "Plural Types" are similar to product types plus the implicit subtyping relations that `A + B ⇒ A` and `A + B ⇒ B`.
 Types are either singular or plural, never both.
-If you want to turn A + B into a singular type, then you could write it as its corresponding product: `(A,B)`.
+If you want to turn `A + B` into a singular type, then you could write it as its corresponding product: `(A,B)`.
 
 ## Direct Citations
 
