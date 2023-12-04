@@ -72,6 +72,7 @@ If you want to turn `A + B` into a singular type, then you could write it as its
 
 ## Possible Extensions
 
+* string rewriting at the type level: `f : a -> T<a>`
 * $$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 * $$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 * $$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
