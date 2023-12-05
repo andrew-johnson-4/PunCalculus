@@ -72,7 +72,7 @@ If you want to turn `A + B` into a singular type, then you could write it as its
 
 ## Possible Extensions
 
-* string rewriting at the type level: `a -> T<a>` apply `B` tries a relog unification `a=B;T<a>`
+* string rewriting at the type level: `a -> T<a>` apply `B` tries a [Relog](https://github.com/andrew-johnson-4/InPlace) unification `a=B;T<a>`
 * $$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 * $$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 * $$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
