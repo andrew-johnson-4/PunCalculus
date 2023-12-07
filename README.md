@@ -6,6 +6,7 @@ A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc pol
 Ad-Hoc Polymorphism is introduced to the Simply Typed Lambda Calculus by pluralizing lambda abstractions.
 Terms such as `λx:X. y` are represented instead as `λ⟨x:X. y⟩`.
 Plural abstractions are represented with more braces: `λ⟨a:A. b⟩⟨x:X. y⟩`.
+The type system is also extended slightly to support plural types: `A + B`.
 
 ## Motivation
 
@@ -59,7 +60,7 @@ Banning plurals still permits ad-hoc polymorphism in the *either-or* cases.
 
 "Plural Types" are similar to product types plus the implicit subtyping relations that `A + B ⇒ A` and `A + B ⇒ B`.
 Types are either singular or plural, never both.
-If you want to turn A + B into a singular type, then you could write it as AB.
+If you want to turn `A + B` into a singular type, then you could write it as its corresponding product: `(A,B)`.
 
 ## Direct Citations
 
@@ -71,9 +72,9 @@ If you want to turn A + B into a singular type, then you could write it as AB.
 
 ## Possible Extensions
 
+* string rewriting at the type level: `a -> T<a>` apply `B` tries a [Relog](https://github.com/andrew-johnson-4/InPlace) unification `a=B;T<a>`
 * $$terminal \ absurd \quad \frac{\Gamma \vdash f:A + ¬A}{\Gamma \vdash \bot}$$
 * $$intermediate \ greedy \ infer \quad \frac{f:A \to B \quad f:B \to C}{f:A \to C}$$
 * $$intermediate \ always \ follows \quad \frac{f: A \to B \quad f:¬ A \to B}{f(x): B}$$
 * Subtyping
 * Dependent Types
-* [Strongly Normalizing subsets of Lambda Calculus](https://cstheory.stackexchange.com/questions/20364/how-to-make-the-lambda-calculus-strong-normalizing-without-a-type-system)
