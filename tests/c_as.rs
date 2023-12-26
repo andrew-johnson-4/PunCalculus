@@ -19,7 +19,7 @@ fn hello_world() {
       (.data)
       (label msg
          (.ascii "Hello, world!\n")
-         (len = offset @len @msg)
+         (.len offset @len @msg)
       )
    );
    program.compile("a.out");

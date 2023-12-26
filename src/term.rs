@@ -11,6 +11,9 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
+const BINOP: [&'static str; 2] = ["movl","offset"];
+const UNOP: [&'static str; 1] = ["int"];
+
 impl Term {
    pub fn to_string(&self) -> String {
       match self {
@@ -50,6 +53,8 @@ impl Term {
    }
    pub fn as_assembly(&self) -> String {
       if let Term::App(dir,r,_) = self {
+
+         //sections
          if let Term::Var(ref dir,_) = **dir {
          if dir.starts_with(".") {
             return format!("{}\n{}", dir.to_string(), r.as_assembly());
@@ -59,6 +64,8 @@ impl Term {
          if ldir.starts_with(".") {
             return format!("{} {}\n{}", ldir.to_string(), label.to_string(), r.as_assembly());
          }}}
+
+         //labels
          if let Term::Var(ref dir,_) = **dir {
          if dir=="label" {
          if let Term::App(ref ln,ref inner,_) = **r {
@@ -72,7 +79,30 @@ impl Term {
          if let Term::Var(ref ln,_) = **ln {
             return format!("{}:\n{}\n{}", ln.to_string(), inner.as_assembly(), r.as_assembly());
          }}}}}
-         println!("unknown directive: {} {}", dir.to_string(), r.to_string());
+
+         //instructions
+         if let Term::Var(ref dir,_) = **dir {
+         if UNOP.contains(&dir.as_str()) {
+            return format!("\t{} {}\n", dir, r.as_assembly());
+         }}
+         if let Term::Var(ref dir,_) = **dir {
+         if BINOP.contains(&dir.as_str()) {
+         if let Term::App(ref a1,ref a2,_) = **r {
+            return format!("\t{} {} {}\n", dir, a1.as_assembly(), a2.as_assembly());
+         }}}
+         if let Term::App(ref ldir,ref inner,_) = **dir {
+         if let Term::Var(ref ldir,_) = **ldir {
+         if UNOP.contains(&ldir.as_str()) {
+            return format!("\t{} {}\n{}", ldir, inner.as_assembly(), r.as_assembly());
+         }}}
+         if let Term::App(ref ldir,ref inner,_) = **dir {
+         if let Term::Var(ref ldir,_) = **ldir {
+         if BINOP.contains(&ldir.as_str()) {
+         if let Term::App(ref a1,ref a2,_) = **inner {
+            return format!("\t{} {} {}\n{}", ldir, a1.as_assembly(), a2.as_assembly(), r.as_assembly());
+         }}}}
+
+         panic!("unknown directive: {} {}", dir.to_string(), r.to_string());
       }
       self.to_string()
    }
