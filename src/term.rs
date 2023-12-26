@@ -49,6 +49,31 @@ impl Term {
       }
    }
    pub fn as_assembly(&self) -> String {
+      if let Term::App(dir,r,_) = self {
+         if let Term::Var(ref dir,_) = **dir {
+         if dir.starts_with(".") {
+            return format!("{}\n{}", dir.to_string(), r.as_assembly());
+         }}
+         if let Term::App(ref ldir,ref label,_) = **dir {
+         if let Term::Var(ref ldir,_) = **ldir {
+         if ldir.starts_with(".") {
+            return format!("{} {}\n{}", ldir.to_string(), label.to_string(), r.as_assembly());
+         }}}
+         if let Term::Var(ref dir,_) = **dir {
+         if dir=="label" {
+         if let Term::App(ref ln,ref inner,_) = **r {
+         if let Term::Var(ref ln,_) = **ln {
+            return format!("{}:\n{}", ln.to_string(), inner.as_assembly());
+         }}}}
+         if let Term::App(ref ldir,ref label,_) = **dir {
+         if let Term::Var(ref ldir,_) = **ldir {
+         if ldir=="label" {
+         if let Term::App(ref ln,ref inner,_) = **label {
+         if let Term::Var(ref ln,_) = **ln {
+            return format!("{}:\n{}\n{}", ln.to_string(), inner.as_assembly(), r.as_assembly());
+         }}}}}
+         println!("unknown directive: {} {}", dir.to_string(), r.to_string());
+      }
       self.to_string()
    }
    pub fn compile(&self, cfg: &str) {
