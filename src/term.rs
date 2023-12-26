@@ -1,6 +1,8 @@
 
 use crate::typ::Type;
 use crate::reference_solver::infer;
+use std::fs::File;
+use std::io::prelude::*;
 
 #[derive(Debug,PartialEq,Eq,Clone)]
 pub enum Term {
@@ -10,6 +12,13 @@ pub enum Term {
 }
 
 impl Term {
+   pub fn to_string(&self) -> String {
+      match self {
+         Term::Var(v,_vt) => { v.clone() },
+         Term::Abs(ps,_pt) => { "λ".to_string() },
+         Term::App(l,r,_t) => { format!("({} {})", l.to_string(), r.to_string()) },
+      }
+   }
    pub fn typ(&self) -> Type {
       match self {
          Term::Var(_,tt) => tt.clone(),
@@ -37,6 +46,19 @@ impl Term {
          Term::Var(v,_) => Term::Var(v,tt),
          Term::Abs(a,_) => Term::Abs(a,tt),
          Term::App(f,x,_) => Term::App(f,x,tt),
+      }
+   }
+   pub fn as_assembly(&self) -> String {
+      self.to_string()
+   }
+   pub fn compile(&self, cfg: &str) {
+      let assembly = self.as_assembly();
+      if cfg.ends_with(".as") {
+         let mut file = File::create(cfg).expect("Could not create file in Term::compile");
+         file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
+      } else {
+         let mut file = File::create("tmp.as").expect("Could not create file in Term::compile");
+         file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
       }
    }
 }
