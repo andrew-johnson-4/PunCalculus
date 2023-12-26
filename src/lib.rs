@@ -43,9 +43,18 @@ macro_rules! punc {
    };
    ({ $t:expr }) => { $t };
    ( $i:tt : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
-   ( $i:tt ( $($j:tt)* ) ) => { Term::app( punc!($i), punc!($($j)*) ) };
+   ( $i:tt $( ( $($j:tt)* ) )+ ) => { Term::app( punc!($i), punc!($( ( $($j)* ) )*) ) };
    ( $i:ident : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
+   ( $i:ident $($j:tt)+ ) => { Term::app( Term::var(stringify!($i)), punc!($($j)*) ) };
+   ( @ $i:tt $($j:tt)+ ) => { Term::app( Term::var(&("@".to_string() + stringify!($i))), punc!($($j)*) ) };
+   ( % $i:tt $($j:tt)+ ) => { Term::app( Term::var(&("%".to_string() + stringify!($i))), punc!($($j)*) ) };
+   ( . $i:tt $($j:tt)+ ) => { Term::app( Term::var(&(".".to_string() + stringify!($i))), punc!($($j)*) ) };
+   ( = $($i:tt)+ ) => { Term::app( Term::var("="), punc!($($i)*) ) };
+   ( $i:literal ) => { Term::var(stringify!($i)) };
    ( $i:ident ) => { Term::var(stringify!($i)) };
+   ( @ $i:tt ) => { Term::var(&("@".to_string() + stringify!($i))) };
+   ( % $i:tt ) => { Term::var(&("%".to_string() + stringify!($i))) };
+   ( . $i:tt ) => { Term::var(&(".".to_string() + stringify!($i))) };
    ( $i:ident $($j:tt)+ ) => { Term::app( Term::var(stringify!($i)), punc!($($j)*) ) };
    (( $($i:tt)+ )) => { punc!($($i)*) };
 }
