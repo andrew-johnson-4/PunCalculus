@@ -1,4 +1,4 @@
-# Pun Calculus
+# [Pun Calculus](https://github.com/andrew-johnson-4/PunCalculus/wiki)
 A variant of Typed Lambda Calculus with generalized variable punning (ad-hoc polymorphism).
 
 ## Contribution
