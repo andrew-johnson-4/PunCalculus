@@ -18,14 +18,14 @@ fn hello_world() {
          (syscall)
       )
       (label message
-         (.ascii "Hello, world\n")
+         (.ascii "hello world\n")
       )
    );
    program.compile("a.out");
 
-   let mut run_program = Command::new("a.out");
+   let mut run_program = Command::new("./a.out");
    assert_eq!(
       String::from_utf8_lossy(&run_program.output().expect("failed to execute process").stdout),
-      "hello world\n"
+      "hello world\n\0"
    );
 }

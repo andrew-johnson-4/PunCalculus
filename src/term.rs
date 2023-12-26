@@ -3,6 +3,7 @@ use crate::typ::Type;
 use crate::reference_solver::infer;
 use std::fs::File;
 use std::io::prelude::*;
+use std::process::Command;
 
 #[derive(Debug,PartialEq,Eq,Clone)]
 pub enum Term {
@@ -58,16 +59,16 @@ impl Term {
          //sections
          if let Term::Var(ref dir,_) = **dir {
          if dir==".ascii" {
-            return format!(".ascii {}\n", r.as_assembly());
+            return format!("\t.ascii {}\n", r.as_assembly());
          }}
          if let Term::Var(ref dir,_) = **dir {
          if dir.starts_with(".") {
-            return format!("{}\n{}", dir.to_string(), r.as_assembly());
+            return format!("\t{}\n{}", dir.to_string(), r.as_assembly());
          }}
          if let Term::App(ref ldir,ref label,_) = **dir {
          if let Term::Var(ref ldir,_) = **ldir {
          if ldir.starts_with(".") {
-            return format!("{} {}\n{}", ldir.to_string(), label.to_string(), r.as_assembly());
+            return format!("\t{} {}\n{}", ldir.to_string(), label.to_string(), r.as_assembly());
          }}}
 
          //labels
@@ -129,12 +130,31 @@ impl Term {
    }
    pub fn compile(&self, cfg: &str) {
       let assembly = self.as_assembly();
-      if cfg.ends_with(".as") {
+      if cfg.ends_with(".s") {
          let mut file = File::create(cfg).expect("Could not create file in Term::compile");
          file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
       } else {
-         let mut file = File::create("tmp.as").expect("Could not create file in Term::compile");
+         let mut file = File::create("tmp.s").expect("Could not create file in Term::compile");
          file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
+
+         Command::new("as")
+                 .arg("tmp.s")
+                 .arg("-o")
+                 .arg("tmp.o")
+                 .spawn()
+                 .expect("Could not run assembler in Term::compile")
+                 .wait()
+                 .expect("Could not wait for assembler in Term::compile");
+
+         Command::new("ld")
+                 .arg("-s")
+                 .arg("-o")
+                 .arg(cfg)
+                 .arg("tmp.o")
+                 .spawn()
+                 .expect("Could not run linker in Term::compile")
+                 .wait()
+                 .expect("Could not wait for linker in Term::compile");
       }
    }
 }
