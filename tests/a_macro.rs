@@ -132,3 +132,20 @@ fn rust2() {
       )
    )
 }
+
+#[test]
+fn seq() {
+   assert_eq!(
+      punc!( ; x y z ),
+      Term::app(
+         Term::var(";"),
+         Term::app(
+            Term::var("x"),
+            Term::app(
+              Term::var("y"),
+              Term::var("z"),
+            ),
+         )
+      )
+   )
+}

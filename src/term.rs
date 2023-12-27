@@ -107,6 +107,12 @@ impl Term {
    }
    pub fn as_assembly(&self) -> String {
       if let Term::App(dir,r,_) = self {
+         //sequences
+         if let Term::App(ref l,ref r,_) = **r {
+         if let Term::Var(ref dir,_) = **dir {
+         if dir==";" {
+            return format!("{}{}", l.as_assembly(), r.as_assembly());
+         }}}       
 
          //sections
          if let Term::Var(ref dir,_) = **dir {
