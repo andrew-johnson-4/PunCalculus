@@ -42,6 +42,7 @@ macro_rules! punc {
       ])
    };
    ({ $t:expr }) => { $t };
+   ({ $t:expr } $($s:tt)+ ) => { Term::app( $t, punc!($($s)*) ) };
    ( $i:tt : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
    ( $i:tt $( ( $($j:tt)* ) )+ ) => { Term::app( punc!($i), punc!($( ( $($j)* ) )*) ) };
    ( $i:ident : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };

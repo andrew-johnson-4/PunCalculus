@@ -118,3 +118,17 @@ fn rust1() {
       )
    )
 }
+
+#[test]
+fn rust2() {
+   assert_eq!(
+      punc!( x {Term::var("y")} z ),
+      Term::app(
+         Term::var("x"),
+         Term::app(
+            Term::var("y"),
+            Term::var("z"),
+         )
+      )
+   )
+}
