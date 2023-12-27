@@ -9,6 +9,8 @@ the code and IP as they would like. Please, just be nice.
 
 */
 
+#![feature(thread_id_value)]
+
 #[macro_export]
 macro_rules! punc_type {
    ( $t:ident ) => { Type::named(stringify!($t)) };

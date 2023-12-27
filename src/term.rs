@@ -192,8 +192,8 @@ impl Term {
          let mut file = File::create(cfg).expect("Could not create file in Term::compile");
          file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
       } else {
-         let tmp_o = format!("tmp.{}.o",std::process::id());
-         let tmp_s = format!("tmp.{}.s",std::process::id());
+         let tmp_o = format!("tmp.{}.{}.o",std::process::id(), std::thread::current().id().as_u64() );
+         let tmp_s = format!("tmp.{}.{}.s",std::process::id(), std::thread::current().id().as_u64() );
          let mut file = File::create(&tmp_s).expect("Could not create file in Term::compile");
          file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
 
