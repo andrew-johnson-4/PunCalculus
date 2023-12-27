@@ -192,13 +192,15 @@ impl Term {
          let mut file = File::create(cfg).expect("Could not create file in Term::compile");
          file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
       } else {
-         let mut file = File::create("tmp.s").expect("Could not create file in Term::compile");
+         let tmp_o = format!("tmp.{}.o",std::process::id());
+         let tmp_s = format!("tmp.{}.s",std::process::id());
+         let mut file = File::create(&tmp_s).expect("Could not create file in Term::compile");
          file.write_all(assembly.as_bytes()).expect("Could not write to file in Term::compile");
 
          Command::new("as")
-                 .arg("tmp.s")
+                 .arg(&tmp_s)
                  .arg("-o")
-                 .arg("tmp.o")
+                 .arg(&tmp_o)
                  .spawn()
                  .expect("Could not run assembler in Term::compile")
                  .wait()
@@ -208,7 +210,7 @@ impl Term {
                  .arg("-s")
                  .arg("-o")
                  .arg(cfg)
-                 .arg("tmp.o")
+                 .arg(&tmp_o)
                  .spawn()
                  .expect("Could not run linker in Term::compile")
                  .wait()
