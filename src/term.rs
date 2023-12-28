@@ -49,7 +49,8 @@ const BINOP: [&'static str; 53] = [
    "into",
    "iret"
 ];
-const UNOP: [&'static str; 20] = [
+const UNOP: [&'static str; 21] = [
+   "call",
    "int",
    "jo",
    "jno",
@@ -71,7 +72,7 @@ const UNOP: [&'static str; 20] = [
    "je",
    "jne",
 ];
-const ZOP: [&'static str; 1] = ["syscall"];
+const ZOP: [&'static str; 1] = ["syscall","ret"];
 
 impl Term {
    pub fn to_string(&self) -> String {
