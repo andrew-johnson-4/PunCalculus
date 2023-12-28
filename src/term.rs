@@ -12,7 +12,7 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
-const BINOP: [&'static str; 69] = [
+const BINOP: [&'static str; 72] = [
    "add",
    "adc",
    "and",
@@ -36,6 +36,9 @@ const BINOP: [&'static str; 69] = [
    "jnl",
    "jle",
    "jnle",
+   "jmp",
+   "je",
+   "jne",
    "test",
    "xchg",
    "xor",
