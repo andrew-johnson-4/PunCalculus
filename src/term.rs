@@ -112,13 +112,6 @@ impl Term {
    }
    pub fn as_assembly(&self) -> String {
       if let Term::App(dir,r,_) = self {
-         //sequences
-         if let Term::App(ref l,ref r,_) = **r {
-         if let Term::Var(ref dir,_) = **dir {
-         if dir==";" {
-            return format!("{}{}", l.as_assembly(), r.as_assembly());
-         }}}       
-
          //sections
          if let Term::Var(ref dir,_) = **dir {
          if dir==".ascii" {
@@ -179,6 +172,9 @@ impl Term {
          if let Term::App(ref a1,ref a2,_) = **inner {
             return format!("\t{} {}, {}\n{}", ldir, a1.as_assembly(), a2.as_assembly(), r.as_assembly());
          }}}}
+
+         //sequences
+         return format!("{}{}", dir.as_assembly(), r.as_assembly());
       }
       if let Term::Var(v, _) = self {
          if ZOP.contains(&v.as_str()) {
