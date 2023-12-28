@@ -4,6 +4,7 @@ use crate::reference_solver::infer;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process::Command;
+use std::io::BufReader;
 
 #[derive(Debug,PartialEq,Eq,Clone)]
 pub enum Term {
@@ -12,67 +13,28 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
-const BINOP: [&'static str; 53] = [
-   "add",
-   "adc",
-   "and",
-   "push",
-   "pusha",
-   "pop",
-   "popa",
-   "test",
-   "xchg",
-   "xor",
-   "inc",
-   "mov", "movb", "movs", "movw", "movl", "movq", "movt", //mov family instructions
-   "ret",
-   "in", "inb", "ins", "inw", "inl", "inq", "int",
-   "out", "outb", "outs", "outw", "outl", "outq", "outt",
-   "lock",
-   "int1",
-   "hlt",
-   "cmc",
-   "or",
-   "sbb",
-   "sub",
-   "cmp",
-   "imul",
-   "wait",
-   "stos",
-   "lods",
-   "clc",
-   "stc",
-   "cli",
-   "sti",
-   "cld",
-   "std",
-   "into",
-   "iret"
-];
-const UNOP: [&'static str; 21] = [
-   "call",
-   "int",
-   "jo",
-   "jno",
-   "jb",
-   "jnb",
-   "jz",
-   "jnz",
-   "jbe",
-   "jnbe",
-   "js",
-   "jns",
-   "jp",
-   "jnp",
-   "jl",
-   "jnl",
-   "jle",
-   "jnle",
-   "jmp",
-   "je",
-   "jne",
-];
-const ZOP: [&'static str; 2] = ["syscall","ret"];
+fn is_binop(s: &str) -> bool {
+   let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
+   let mut buf_reader = BufReader::new(file);
+   let data: serde_yaml::Value = serde_yaml::from_reader(buf_reader)
+            .expect("Could not read file opcodes/x86.yaml");
+   !data[s]["binary"].is_null()
+}
+fn is_unop(s: &str) -> bool {
+   let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
+   let mut buf_reader = BufReader::new(file);
+   let data: serde_yaml::Value = serde_yaml::from_reader(buf_reader)
+            .expect("Could not read file opcodes/x86.yaml");
+   !data[s]["unary"].is_null()
+}
+fn is_zop(s: &str) -> bool {
+   let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
+   let mut buf_reader = BufReader::new(file);
+   let data: serde_yaml::Value = serde_yaml::from_reader(buf_reader)
+            .expect("Could not read file opcodes/x86.yaml");
+   !data[s]["zero"].is_null()
+}
+
 
 impl Term {
    pub fn to_string(&self) -> String {
@@ -150,26 +112,26 @@ impl Term {
 
          //instructions
          if let Term::Var(ref dir,_) = **dir {
-         if ZOP.contains(&dir.as_str()) {
+         if is_zop(&dir.as_str()) {
             return format!("\t{}\n{}", dir, r.as_assembly());
          }}
          if let Term::Var(ref dir,_) = **dir {
-         if UNOP.contains(&dir.as_str()) {
+         if is_unop(&dir.as_str()) {
             return format!("\t{} {}\n", dir, r.as_assembly());
          }}
          if let Term::Var(ref dir,_) = **dir {
-         if BINOP.contains(&dir.as_str()) {
+         if is_binop(&dir.as_str()) {
          if let Term::App(ref a1,ref a2,_) = **r {
             return format!("\t{} {}, {}\n", dir, a1.as_assembly(), a2.as_assembly());
          }}}
          if let Term::App(ref ldir,ref inner,_) = **dir {
          if let Term::Var(ref ldir,_) = **ldir {
-         if UNOP.contains(&ldir.as_str()) {
+         if is_unop(&ldir.as_str()) {
             return format!("\t{} {}\n{}", ldir, inner.as_assembly(), r.as_assembly());
          }}}
          if let Term::App(ref ldir,ref inner,_) = **dir {
          if let Term::Var(ref ldir,_) = **ldir {
-         if BINOP.contains(&ldir.as_str()) {
+         if is_binop(&ldir.as_str()) {
          if let Term::App(ref a1,ref a2,_) = **inner {
             return format!("\t{} {}, {}\n{}", ldir, a1.as_assembly(), a2.as_assembly(), r.as_assembly());
          }}}}
@@ -178,7 +140,7 @@ impl Term {
          return format!("{}{}", dir.as_assembly(), r.as_assembly());
       }
       if let Term::Var(v, _) = self {
-         if ZOP.contains(&v.as_str()) {
+         if is_zop(&v.as_str()) {
             return format!("\t{}\n", v);
          }
          if v.starts_with("@") {
