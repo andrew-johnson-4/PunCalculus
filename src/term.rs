@@ -12,7 +12,7 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
-const BINOP: [&'static str; 72] = [
+const BINOP: [&'static str; 53] = [
    "add",
    "adc",
    "and",
@@ -20,25 +20,6 @@ const BINOP: [&'static str; 72] = [
    "pusha",
    "pop",
    "popa",
-   "jo",
-   "jno",
-   "jb",
-   "jnb",
-   "jz",
-   "jnz",
-   "jbe",
-   "jnbe",
-   "js",
-   "jns",
-   "jp",
-   "jnp",
-   "jl",
-   "jnl",
-   "jle",
-   "jnle",
-   "jmp",
-   "je",
-   "jne",
    "test",
    "xchg",
    "xor",
@@ -68,7 +49,28 @@ const BINOP: [&'static str; 72] = [
    "into",
    "iret"
 ];
-const UNOP: [&'static str; 1] = ["int"];
+const UNOP: [&'static str; 20] = [
+   "int",
+   "jo",
+   "jno",
+   "jb",
+   "jnb",
+   "jz",
+   "jnz",
+   "jbe",
+   "jnbe",
+   "js",
+   "jns",
+   "jp",
+   "jnp",
+   "jl",
+   "jnl",
+   "jle",
+   "jnle",
+   "jmp",
+   "je",
+   "jne",
+];
 const ZOP: [&'static str; 1] = ["syscall"];
 
 impl Term {

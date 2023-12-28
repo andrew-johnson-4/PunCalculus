@@ -1,6 +1,6 @@
 [package]
 name = "punc"
-version = "1.0.8"
+version = "1.0.9"
 authors = ["Andrew <andrew@subarctic.org>"]
 license = "MIT"
 description = "Pun Calculus"
