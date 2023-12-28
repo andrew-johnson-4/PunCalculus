@@ -72,7 +72,7 @@ const UNOP: [&'static str; 21] = [
    "je",
    "jne",
 ];
-const ZOP: [&'static str; 1] = ["syscall","ret"];
+const ZOP: [&'static str; 2] = ["syscall","ret"];
 
 impl Term {
    pub fn to_string(&self) -> String {
