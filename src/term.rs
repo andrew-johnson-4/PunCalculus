@@ -79,6 +79,12 @@ impl Term {
    }
    pub fn as_assembly(&self) -> String {
       if let Term::App(dir,r,_) = self {
+         //pointer
+         if let Term::Var(ref dir,_) = **dir {
+         if dir=="[]" {
+            return format!("({})", r.as_assembly());
+         }}
+
          //sections
          if let Term::Var(ref dir,_) = **dir {
          if LDIRECTIVES.contains(&dir.as_str()) {

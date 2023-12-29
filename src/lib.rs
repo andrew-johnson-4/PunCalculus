@@ -46,6 +46,8 @@ macro_rules! punc {
    (; $i:tt $($j:tt)+ ) => { Term::app( Term::var(";"), Term::app( punc!($i), punc!($($j)*) ) ) };
    ({ $t:expr }) => { $t };
    ({ $t:expr } $($s:tt)+ ) => { Term::app( $t, punc!($($s)*) ) };
+   ([ $($t:tt)+ ]) => { Term::app( Term::var("[]"), punc!($($t)*) ) };
+   ([ $($t:tt)+ ] $($s:tt)+ ) => { Term::app( Term::app( Term::var("[]"), punc!($($t)*) ), punc!($($s)*) ) };
    ( $i:tt : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
    ( $i:tt $( ( $($j:tt)* ) )+ ) => { Term::app( punc!($i), punc!($( ( $($j)* ) )*) ) };
    ( $i:ident : $($t:tt)* ) => { Term::asc( punc!($i), punc_type!($($t)*) ) };
