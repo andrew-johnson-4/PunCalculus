@@ -21,6 +21,7 @@ fn hello_world() {
       )
       (label message
          (.asciz "hello world")
+         (.zero 1)
       )
    );
    program.compile("a.out");

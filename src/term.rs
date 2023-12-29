@@ -13,7 +13,7 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
-const LDIRECTIVES: [&str; 2] = [".ascii", ".asciz"];
+const LDIRECTIVES: [&str; 3] = [".ascii", ".asciz", ".zero"];
 const UDIRECTIVES: [&str; 1] = [".global"];
 const ZDIRECTIVES: [&str; 1] = [".text"];
 
