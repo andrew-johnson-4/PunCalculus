@@ -13,25 +13,27 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
-const DIRECTIVES: [&str; 2] = [".ascii", ".asciz"];
+const LDIRECTIVES: [&str; 2] = [".ascii", ".asciz"];
+const UDIRECTIVES: [&str; 1] = [".global"];
+const ZDIRECTIVES: [&str; 1] = [".text"];
 
 fn is_binop(s: &str) -> bool {
    let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
-   let mut buf_reader = BufReader::new(file);
+   let buf_reader = BufReader::new(file);
    let data: serde_yaml::Value = serde_yaml::from_reader(buf_reader)
             .expect("Could not read file opcodes/x86.yaml");
    !data[s]["binary"].is_null()
 }
 fn is_unop(s: &str) -> bool {
    let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
-   let mut buf_reader = BufReader::new(file);
+   let buf_reader = BufReader::new(file);
    let data: serde_yaml::Value = serde_yaml::from_reader(buf_reader)
             .expect("Could not read file opcodes/x86.yaml");
    !data[s]["unary"].is_null()
 }
 fn is_zop(s: &str) -> bool {
    let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
-   let mut buf_reader = BufReader::new(file);
+   let buf_reader = BufReader::new(file);
    let data: serde_yaml::Value = serde_yaml::from_reader(buf_reader)
             .expect("Could not read file opcodes/x86.yaml");
    !data[s]["zero"].is_null()
@@ -79,18 +81,17 @@ impl Term {
       if let Term::App(dir,r,_) = self {
          //sections
          if let Term::Var(ref dir,_) = **dir {
-         if DIRECTIVES.contains(&dir.as_str()) {
+         if LDIRECTIVES.contains(&dir.as_str()) {
             return format!("\t{} {}\n", dir, r.as_assembly());
          }}
          if let Term::Var(ref dir,_) = **dir {
-         if dir.starts_with(".") {
-            return format!("\t{}\n{}", dir.to_string(), r.as_assembly());
+         if ZDIRECTIVES.contains(&dir.as_str()) {
+            return format!("{}\n{}\n", dir, r.as_assembly());
          }}
-         if let Term::App(ref ldir,ref label,_) = **dir {
-         if let Term::Var(ref ldir,_) = **ldir {
-         if ldir.starts_with(".") {
-            return format!("\t{} {}\n{}", ldir.to_string(), label.to_string(), r.as_assembly());
-         }}}
+         if let Term::Var(ref dir,_) = **dir {
+         if UDIRECTIVES.contains(&dir.as_str()) {
+            return format!("{} {}\n", dir, r.as_assembly());
+         }}
 
          //labels
          if let Term::Var(ref dir,_) = **dir {
