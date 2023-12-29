@@ -13,6 +13,8 @@ pub enum Term {
    App(Box<Term>,Box<Term>,Type),
 }
 
+const DIRECTIVES: [&str; 2] = [".ascii", ".asciz"];
+
 fn is_binop(s: &str) -> bool {
    let file = File::open("opcodes/x86.yaml").expect("Could not read file opcodes/x86.yaml");
    let mut buf_reader = BufReader::new(file);
@@ -77,8 +79,8 @@ impl Term {
       if let Term::App(dir,r,_) = self {
          //sections
          if let Term::Var(ref dir,_) = **dir {
-         if dir==".ascii" {
-            return format!("\t.ascii {}\n", r.as_assembly());
+         if DIRECTIVES.contains(&dir.as_str()) {
+            return format!("\t{} {}\n", dir, r.as_assembly());
          }}
          if let Term::Var(ref dir,_) = **dir {
          if dir.starts_with(".") {
