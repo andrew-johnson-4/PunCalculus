@@ -18,7 +18,7 @@ fn hello_world() {
          (syscall)
       )
       (label message
-         (.ascii "hello world\n")
+         (.asciz "hello world\n")
       )
    );
    program.compile("a.out");
