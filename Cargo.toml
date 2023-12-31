@@ -1,6 +1,6 @@
 [package]
 name = "punc"
-version = "1.0.17"
+version = "1.0.18"
 authors = ["Andrew <andrew@subarctic.org>"]
 license = "MIT"
 description = "Pun Calculus"
@@ -11,5 +11,3 @@ keywords = ["pun","calculus"]
 
 [dependencies]
 im-lists   = { version = "0.4" }
-serde = "1.0"
-serde_yaml = "0.9"
