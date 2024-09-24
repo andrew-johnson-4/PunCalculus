@@ -8,13 +8,6 @@ Terms such as `λx:X. y` are represented instead as `λ⟨x:X. y⟩`.
 Plural abstractions are represented with more braces: `λ⟨a:A. b⟩⟨x:X. y⟩`.
 The type system is also extended slightly to support plural types: `A + B`.
 
-## Motivation
-
-In the LSTS proof assistant it became apparent that plural abstractions are valuable.
-This was observed in simple function applications `f(x)` where the function candidates could prove multiple properties depending on properties of the input.
-This was the immediate origin of the concept of "plural" arrows that can carry multiple properties.
-PunC is an attempt to generalize this idea before upgrading the LSTS framework.
-
 ## Types
 
 $$abstraction \quad \frac{\Gamma \vdash a:A \quad \Gamma \vdash b:B \quad \Gamma \vdash x:X \quad \Gamma \vdash y:Y \quad λ⟨a.b⟩⟨x.y⟩}{\Gamma \vdash λ⟨a.b⟩⟨x.y⟩:(A \to B) + (X \to Y)}$$
